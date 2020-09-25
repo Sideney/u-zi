@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class Gcd1 {
+	private static int gcd(int m, int n) {
+		if (m < n) {
+			int temp = n;
+			n = m;
+			m = temp;
+		}
+		int t = m % n;
+		while (t != 0) {
+			m = n;
+			n = t;
+			t = m % n;
+		}
+		return n;
+	}
+
+	private static int gcd_recursive(int m, int n) {
+		if (n == 0) {
+			return m;
+		} else {
+			return gcd_recursive(n, m % n);
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int m = sc.nextInt();
+		int n = sc.nextInt();
+		int k = gcd(m, n);
+		int h = gcd_recursive(m, n);
+		System.out.println("The result from way1:" + k);
+		System.out.println("The result from way2:" + h);
+
+	}
+
+}
